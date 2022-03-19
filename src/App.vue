@@ -1,17 +1,19 @@
 <template>
   <v-app>
-    <div
-        class="top-filler"
-    ></div>
-    <v-system-bar
-        color="teal darken-4 darken-4"
-        fixed
-        class="d-flex justify-space-around text-caption"
-    >
-      <span class="white--text text-caption">Domains</span>
-      <span class="white--text text-uppercase text-caption">https://cisotrust.fr</span>
-      <span class="white--text text-caption">Signed in as Franck</span>
-    </v-system-bar>
+    <div class="d-flex">
+      <div
+          class="top-filler"
+      ></div>
+      <v-system-bar
+          color="teal darken-4 darken-4"
+          class="d-flex justify-space-between text-caption"
+      >
+        <span class="white--text text-caption">{{ headerPath }}</span>
+        <span class="white--text text-uppercase text-caption">https://cisotrust.fr</span>
+        <span class="white--text text-caption">Signed in as Franck</span>
+      </v-system-bar>
+    </div>
+
     <v-navigation-drawer
         permanent
         left
@@ -86,21 +88,38 @@
 
 export default {
   name: 'App',
-
+  computed: {
+    headerPath() {
+      if (this.$route.path === '/') return ''
+      const string = this.$route.path.replace('/', '')
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+  },
   data: () => ({
     //
   }),
 };
 </script>
 <style lang="scss">
+.theme--light.v-application {
+  background: #f7f7f7 !important;
+}
+.v-system-bar {
+  left: 56px !important;
+  width: calc(100vw - 75px) !important;
+}
+
 .full-height {
   height: 100%;
+}
+.mid-height {
+  height: 50%;
 }
 .full-width {
   width: 100%;
 }
 .top-filler {
-  width: 50px;
+  width: 55px;
   height: 36px;
 }
 
@@ -108,10 +127,6 @@ export default {
   min-width: 56px;
   height: 100%;
   float: left;
-}
-
-.v-system-bar {
-  left: 50px;
 }
 a {
   color: transparent !important;
