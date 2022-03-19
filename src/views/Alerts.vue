@@ -4,7 +4,7 @@
       <v-row>
         <v-col md="12">
           <h2>
-            Alerts <span class="alert-number">2</span>
+            <v-badge content="2" color="orange" offset-x="-2" offset-y="10">Alerts</v-badge>
           </h2>
           <h3 class="font-weight-light mb-2">
             Manage your alerts

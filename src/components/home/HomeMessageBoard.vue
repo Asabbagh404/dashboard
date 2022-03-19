@@ -6,7 +6,7 @@
         <v-btn
             x-small
             text
-            :color="showed === 'alerts' ? 'teal darken-4' : 'teal lighten-2' "
+            :color="showed === 'alerts' ? 'grey darken-4' : 'grey lighten-2' "
             @click="show('alerts')"
         >
           Show alerts
@@ -14,7 +14,7 @@
         <v-btn
             x-small
             text
-            :color="showed === 'all' ? 'teal darken-4' : 'teal lighten-2' "
+            :color="showed === 'all' ? 'grey darken-4' : 'grey lighten-2' "
             @click="show('all')"
         >
           Show all
@@ -27,7 +27,7 @@
                          class="full-width d-block mt-5"></v-skeleton-loader>
       </div>
       <v-card v-for="({criticity, description, days}, index) in cards" :key="index" class="full-width d-block mt-5 item" :class="'item-' + criticity">
-        <v-card-title><v-icon class="mr-2" color="teal darken-4">mdi-cog</v-icon> {{ criticity }} <span class="text-caption ml-3 dark darken-1">- {{ days }}</span></v-card-title>
+        <v-card-title><v-icon class="mr-2" color="grey darken-4">mdi-cog</v-icon> {{ criticity }} <span class="text-caption ml-3 dark darken-1">- {{ days }}</span></v-card-title>
         <v-card-text>{{ description }}</v-card-text>
       </v-card>
     </v-card-text>
