@@ -49,7 +49,7 @@
             <v-list-item-title>Inventory</v-list-item-title>
           </v-list-item>
         </router-link>
-        <router-link to="/test">
+        <router-link to="/domains">
           <v-list-item link>
             <v-list-item-icon>
               <v-icon :color="$route.path === '/test' ? 'teal darken-4 darken-4' : 'black'">mdi-shield-account-variant</v-icon>
