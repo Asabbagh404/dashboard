@@ -1,9 +1,19 @@
 <template>
   <v-app>
+    <div
+      class="filler"
+    ></div>
     <v-system-bar
         height="30"
         window
-    ></v-system-bar>
+        color="purple darken-3"
+        fixed
+        class="d-flex justify-space-around"
+    >
+      <span class="white--text">Domains</span>
+      <span class="white--text text-uppercase">https://cisotrust.fr</span>
+      <span class="white--text">Signed in as Franck</span>
+    </v-system-bar>
     <v-navigation-drawer
             permanent
             left
@@ -61,3 +71,12 @@ export default {
   }),
 };
 </script>
+<style scoped lang="scss">
+.filler {
+  width: 50px;
+  height: 36px;
+}
+.v-system-bar {
+  left: 50px;
+}
+</style>
