@@ -1,5 +1,96 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="full-height">
+    <v-container class="full-height">
+      <v-row>
+        <v-col md="12">
+          <h2>
+            Alerts <span class="alert-number">2</span>
+          </h2>
+          <h3 class="font-weight-light mb-2">
+            Manage your alerts
+          </h3>
+          <v-card>
+            <v-card-title>
+              Under Review (2)
+            </v-card-title>
+            <v-expansion-panels>
+              <v-expansion-panel>
+                <v-expansion-panel-header>
+                  <span>
+                  <v-icon class="pr-2">
+                    mdi-alert-circle
+                  </v-icon>
+                  Zizi
+                  </span>
+                </v-expansion-panel-header>
+                <v-expansion-panel-content>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                </v-expansion-panel-content>
+                <v-card-actions>
+                  <v-btn
+                      text
+                      color="orange"
+                  >
+                    Approve
+                  </v-btn>
+
+                  <v-btn
+                      text
+                      color="orange"
+                  >
+                    Resolve
+                  </v-btn>
+                </v-card-actions>
+              </v-expansion-panel>
+              <v-expansion-panel>
+                <v-expansion-panel-header>
+                  <span>
+                    <v-icon class="pr-2">
+                    mdi-alert-circle
+                    </v-icon>
+                  Anal
+                  </span>
+                </v-expansion-panel-header>
+                <v-expansion-panel-content>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                  ut labore et dolore magna aliqua. Ut enim ad
+                </v-expansion-panel-content>
+                <v-card-actions>
+                  <v-btn
+                      text
+                      color="orange"
+                  >
+                    Approve
+                  </v-btn>
+
+                  <v-btn
+                      text
+                      color="orange"
+                  >
+                    Resolve
+                  </v-btn>
+                </v-card-actions>
+              </v-expansion-panel>
+            </v-expansion-panels>
+          </v-card>
+        </v-col>
+        <v-col md="12">
+          <v-card>
+            <v-card-title>
+              New (0)
+            </v-card-title>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
+
+<style scoped>
+.alert-number{
+  background-color: #e77a2e;
+  border-radius: 17px;
+  padding: 3px 10px;
+  color: white;
+}
+</style>
