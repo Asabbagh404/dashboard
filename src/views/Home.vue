@@ -24,12 +24,13 @@ import HomeActiveMonitoredTechnologies from '../components/home/HomeActiveMonito
 import HomeThirdPartyActionSummary from '../components/home/HomeThirdPartyActionSummary';
 
 export default {
+
   name: 'Home',
   components: {
     HomeMessageBoard,
     HomeActiveMonitoredTechnologies,
     HomeThirdPartyActionSummary
-  }
+  },
 }
 </script>
 

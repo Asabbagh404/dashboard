@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import {odinAxiosInstance} from '../utils/axios-instance';
 
 Vue.use(Vuex)
 
@@ -10,6 +11,7 @@ export default new Vuex.Store({
       'try.abtasty.com': 'keyboard',
       'www.googletagmanager.com': 'database',
     },
+    appsList: [],
     apps: {
       "cves": [
         {
@@ -60,9 +62,21 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    setAppsList (state, data) {
+      state.appsList = data
+    }
   },
   actions: {
+    async setAppsList (context) {
+      context.commit('setAppsList', await odinAxiosInstance.getAppsList());
+    }
+  },
+  getters: {
+    appListCount (state) {
+      return state.appsList.length
+    },
   },
   modules: {
+
   }
 })

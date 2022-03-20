@@ -6,7 +6,7 @@
         <v-btn
             x-small
             text
-            :color="showed === 'alerts' ? 'grey darken-4' : 'grey lighten-2' "
+            :color="showed === 'alerts' ? 'grey darken-4' : 'grey lighten-2'"
             @click="show('alerts')"
         >
           Show alerts
@@ -14,7 +14,7 @@
         <v-btn
             x-small
             text
-            :color="showed === 'all' ? 'grey darken-4' : 'grey lighten-2' "
+            :color="showed === 'all' ? 'grey darken-4' : 'grey lighten-2'"
             @click="show('all')"
         >
           Show all

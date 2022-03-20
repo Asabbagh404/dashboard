@@ -2,7 +2,7 @@
   <v-card >
     <v-card-title>Third-Party Action Summary</v-card-title>
     <v-card-text>
-      <div v-for="({url, isActive = false}, index) in $store.state.apps.third_parties" :key="index" class="mt-2 py-2 d-flex flex-wrap justify-space-around align-center" :disabled="n % 2 == 0">
+      <div v-for="({url}, index) in $store.state.apps.third_parties" :key="index" class="mt-2 py-2 d-flex flex-wrap justify-space-around align-center">
         <div class="content">
           <v-icon class="mr-2">mdi-{{ $store.state.mapIconThirdParty[url] }}</v-icon>
           <span class="ml-3">{{ url }}</span>

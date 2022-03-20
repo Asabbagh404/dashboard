@@ -87,32 +87,11 @@
   </div>
 </template>
 <script>
-import axios from 'axios';
-import https from 'https';
-
 export default {
   data() {
     return {
       info: null
     }
   },
-  mounted() {
-    const config = {
-      headers: { Authorization: `Bearer Test` },
-      httpsAgent: agent
-    };
-    const instance = axios.create({
-      httpsAgent: new https.Agent({
-        rejectUnauthorized: false
-      })
-    });
-    instance.get('http://35.180.86.16:1337/v1/status');
-
-    const agent = new https.Agent({
-      rejectUnauthorized: false
-    });
-    axios.get('http://35.180.86.16:1337/v1/status', config)
-        .then(response => (this.info = response));
-  }
 }
 </script>

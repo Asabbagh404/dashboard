@@ -99,9 +99,9 @@ export default {
       return string.charAt(0).toUpperCase() + string.slice(1);
     }
   },
-  data: () => ({
-    //
-  }),
+  mounted() {
+    this.$store.dispatch('setAppsList')
+  },
 };
 </script>
 <style lang="scss">

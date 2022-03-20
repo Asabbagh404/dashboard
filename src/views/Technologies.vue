@@ -4,9 +4,9 @@
       <v-col class="full-height">
         <v-card class="full-height">
           <v-tabs vertical color="dark" background-color="blue-grey lighten-5" active-class="white" class="full-height">
-            <v-tab v-for="({image, name}, index) in technologies" :key="index" class="text-start full-height" :class="isWideScreen ? 'justify-start' : 'justify-center'">
-              <v-img :src="require('@/assets/' + image)" class="mr-3" max-height="20" max-width="20"/>
-              <span v-if="isWideScreen">{{ name }}</span>
+            <v-tab v-for="({id, name}, index) in technologies" :key="index" class="text-start full-height" :class="isWideScreen ? 'justify-start' : 'justify-center'" @click="onTechnologySelect(id)">
+              <v-icon  v-if="isWideScreen" class="mr-2">mdi-earth</v-icon>
+              <span>{{ name }}</span>
             </v-tab>
             <v-tab-item v-for="(technology, index) in technologies" :key="index">
               <v-card flat>
@@ -62,26 +62,29 @@
 
 <script>
 import TechnologiesItemContent from '../components/technologies/TechnologiesItemContent';
+import {odinAxiosInstance} from "../utils/axios-instance";
 
 export default {
   components: {
     TechnologiesItemContent
   },
+  data() {
+    return {
+      singleTechnology: null,
+    }
+  },
   computed: {
     isWideScreen() {
       return ['md', 'lg', 'xl'].includes(this.$vuetify.breakpoint.name)
+    },
+    technologies() {
+      return this.$store.state.appsList;
     }
   },
-  data() {
-    return {
-      technologies: [
-        {name: 'Embedded Script', image:'jquery.png', firstSeen: '2/9/2022', siteDisplayRate: '100%', globalPopularity: '100%'},
-        {name: 'Font by Font Awesome', image:'jquery.png',firstSeen: '2/9/2022', siteDisplayRate: '100%', globalPopularity: '100%'},
-        {name: 'Jquery', image:'jquery.png', firstSeen: '2/9/2022', siteDisplayRate: '100%', globalPopularity: '100%'},
-        {name: 'Lightbox', image:'jquery.png', firstSeen: '2/9/2022', siteDisplayRate: '100%', globalPopularity: '100%'},
-        {name: 'Waypoints', image:'jquery.png', firstSeen: '2/9/2022', siteDisplayRate: '100%', globalPopularity: '100%'},
-        {name: 'Wordpress', image:'jquery.png', firstSeen: '2/9/2022', siteDisplayRate: '100%', globalPopularity: '100%'},
-      ]
+  methods: {
+    async onTechnologySelect(id) {
+     const data = await odinAxiosInstance.getApp(id)
+      this.singleTechnology = data;
     }
   }
 }
