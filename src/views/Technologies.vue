@@ -8,10 +8,10 @@
               <v-icon  v-if="isWideScreen" class="mr-2">mdi-earth</v-icon>
               <span>{{ name }}</span>
             </v-tab>
-            <v-tab-item v-for="(technology, index) in technologies" :key="index">
+            <v-tab-item>
               <v-card flat>
                 <technologies-item-content
-                  :technology="technology"
+                  :technology="singleTechnology"
                 />
               </v-card>
             </v-tab-item>
@@ -30,23 +30,26 @@ export default {
   components: {
     TechnologiesItemContent
   },
+  async mounted() {
+    this.technologies = this.$store.state.appsList;
+    await this.onTechnologySelect(this.technologies[0].id);
+  },
   data() {
     return {
-      singleTechnology: null,
+      singleTechnology: {},
+      technologies: [],
     }
   },
   computed: {
     isWideScreen() {
       return ['md', 'lg', 'xl'].includes(this.$vuetify.breakpoint.name)
     },
-    technologies() {
-      return this.$store.state.appsList;
-    }
   },
   methods: {
     async onTechnologySelect(id) {
-     const data = await odinAxiosInstance.getApp(id)
-      this.singleTechnology = data;
+      this.singleTechnology.app = await odinAxiosInstance.getApp(id)
+      this.singleTechnology.links = await odinAxiosInstance.getAppLinks(id);
+      this.singleTechnology.csves = await odinAxiosInstance.getAppCsves(id);
     }
   }
 }
