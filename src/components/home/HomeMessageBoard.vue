@@ -23,7 +23,7 @@
     </v-card-title>
     <v-card-text>
       <div v-if="cards.length === 0">
-      <v-skeleton-loader v-for="(n, index) in 5" :key="index" type="card" height="100"
+      <v-skeleton-loader v-for="(n, index) in 3" :key="index" type="card" height="100"
                          class="full-width d-block mt-5"></v-skeleton-loader>
       </div>
       <v-card v-for="({criticity, description, days}, index) in cards" :key="index" class="full-width d-block mt-5 item" :class="'item-' + criticity">

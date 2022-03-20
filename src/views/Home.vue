@@ -1,5 +1,5 @@
 <template>
-  <v-container class="full-height">
+  <v-container fluid class="full-height">
     <v-row class="full-height">
       <v-col xl="4" lg="12" >
         <home-message-board />

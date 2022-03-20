@@ -1,6 +1,6 @@
 <template>
   <div class="full-height">
-    <v-container class="full-height">
+    <v-container fluid class="full-height">
       <v-row>
         <v-col md="12">
           <h2>
