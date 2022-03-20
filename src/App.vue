@@ -73,7 +73,9 @@
           </v-list-item>
         </router-link>
         <hr>
-        <router-link to="/">
+        <router-link
+            :is="true ? 'span' : 'router-link'"
+            to="/">
           <v-list-item link disabled>
             <v-list-item-icon>
               <v-icon :color="$route.path === '/' ? 'grey darken-4 darken-4' : 'blue-grey darken-3'" disabled>mdi-earth</v-icon>
