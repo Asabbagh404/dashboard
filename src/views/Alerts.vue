@@ -21,7 +21,7 @@
                   <v-icon class="pr-2">
                     mdi-alert-circle
                   </v-icon>
-                  Zizi
+                  Alert 1
                   </span>
                 </v-expansion-panel-header>
                 <v-expansion-panel-content>
@@ -49,7 +49,7 @@
                     <v-icon class="pr-2">
                     mdi-alert-circle
                     </v-icon>
-                  Anal
+                  Alert 2
                   </span>
                 </v-expansion-panel-header>
                 <v-expansion-panel-content>
