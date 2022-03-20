@@ -1,10 +1,12 @@
 import https from "https";
 import axios from 'axios';
+import app from '../main';
+
 const agent = new https.Agent({
     rejectUnauthorized: false
 });
 const config = {
-    headers: { Authorization: `Bearer Test` },
+    headers: {Authorization: `Bearer Test`},
     httpsAgent: agent,
     baseURL: 'http://35.180.86.16:1337'
 };
@@ -17,10 +19,34 @@ const endpoints = {
 }
 
 Object.assign(odinAxiosInstance, {
-    getAppsList: async () => (await odinAxiosInstance.get(endpoints.getAppsListUrl())).data,
-    getApp: async (id) => (await odinAxiosInstance.get(endpoints.getAppUrl(id))).data,
-    getAppLinks: async (id) => (await odinAxiosInstance.get(endpoints.getAppLinksUrl(id))).data,
-    getAppCsves: async (id) => (await odinAxiosInstance.get(endpoints.getAppCsvesUrl(id))).data,
+    getAppsList: async () => {
+        try {
+            return (await odinAxiosInstance.get(endpoints.getAppsListUrl())).data
+        } catch (e) {
+            app.emitError(e)
+        }
+    },
+    getApp: async (id) => {
+        try {
+            return (await odinAxiosInstance.get(endpoints.getAppUrl(id))).data;
+        } catch (e) {
+            app.emitError(e)
+        }
+    },
+    getAppLinks: async (id) => {
+        try {
+            return (await odinAxiosInstance.get(endpoints.getAppLinksUrl(id))).data;
+        } catch (e) {
+            app.emitError(e)
+        }
+    },
+    getAppCsves: async (id) => {
+        try {
+            return (await odinAxiosInstance.get(endpoints.getAppCsvesUrl(id))).data;
+        } catch (e) {
+            app.emitError(e)
+        }
+    },
 });
 
 export {

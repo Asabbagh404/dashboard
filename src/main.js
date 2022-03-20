@@ -5,8 +5,15 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 
 Vue.config.productionTip = false
+Vue.mixin({
+  methods: {
+    emitError: function (error) {
+      this.$root.$emit('error', error);
+    },
+  },
+})
 
-new Vue({
+export default new Vue({
   router,
   store,
   vuetify,

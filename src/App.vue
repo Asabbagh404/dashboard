@@ -1,5 +1,15 @@
 <template>
   <v-app>
+    <v-alert
+        fixed
+        type="error"
+        v-model="showErrorMessage"
+        transition="slide-x-transition"
+        dismissible
+        dense
+    >
+     An error happened: {{ errorMessage }}
+    </v-alert>
     <div class="d-flex">
       <div
           class="top-filler"
@@ -95,6 +105,12 @@
 
 export default {
   name: 'App',
+  data() {
+    return {
+      errorMessage: '',
+      showErrorMessage: false,
+    }
+  },
   computed: {
     headerPath() {
       if (this.$route.path === '/') return ''
@@ -103,8 +119,18 @@ export default {
     }
   },
   mounted() {
+    this.$root.$on('error', this.showError)
     this.$store.dispatch('setAppsList')
   },
+  methods: {
+    showError(e) {
+      this.errorMessage = e.message;
+      this.showErrorMessage = true
+      setTimeout(() => {
+        this.showErrorMessage = false
+      }, 5000)
+    }
+  }
 };
 </script>
 <style lang="scss">
@@ -150,6 +176,9 @@ a {
   /* .slide-fade-leave-active below version 2.1.8 */ {
   transform: translateX(10px);
   opacity: 0;
+}
+.v-alert {
+  left: 50px;
 }
 .text-header {
   height: 72px!important;
