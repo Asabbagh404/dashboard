@@ -1,6 +1,7 @@
 <template>
-  <div class="full-height">
-    <v-container fluid class="full-height">
+  <div id="app" class="full-height">
+    {{ info }}
+    <v-container class="full-height">
       <v-row>
         <v-col md="12">
           <h2>
@@ -85,12 +86,33 @@
     </v-container>
   </div>
 </template>
+<script>
+import axios from 'axios';
+import https from 'https';
 
-<style scoped>
-.alert-number{
-  background-color: #e77a2e;
-  border-radius: 17px;
-  padding: 3px 10px;
-  color: white;
+export default {
+  data() {
+    return {
+      info: null
+    }
+  },
+  mounted() {
+    const config = {
+      headers: { Authorization: `Bearer Test` },
+      httpsAgent: agent
+    };
+    const instance = axios.create({
+      httpsAgent: new https.Agent({
+        rejectUnauthorized: false
+      })
+    });
+    instance.get('http://35.180.86.16:1337/v1/status');
+
+    const agent = new https.Agent({
+      rejectUnauthorized: false
+    });
+    axios.get('http://35.180.86.16:1337/v1/status', config)
+        .then(response => (this.info = response));
+  }
 }
-</style>
+</script>

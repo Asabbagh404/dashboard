@@ -26,6 +26,7 @@
           <v-list-item-avatar>
             <v-img src="./assets/logo.png"></v-img>
           </v-list-item-avatar>
+          <v-list-item-title class="font-weight-bold">BeSecure</v-list-item-title>
         </v-list-item>
       </v-list>
 
