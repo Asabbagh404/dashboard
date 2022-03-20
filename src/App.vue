@@ -6,7 +6,7 @@
       ></div>
       <v-system-bar
           color="grey darken-4 darken-4"
-          class="d-flex justify-space-between text-caption"
+          class="d-flex justify-space-between text-header"
           window
       >
         <span class="white--text text-caption">{{ headerPath }}</span>
@@ -41,7 +41,7 @@
             <v-list-item-icon>
               <v-icon :color="$route.path === '/' ? 'grey darken-4 darken-4' : 'blue-grey darken-3'">mdi-layers</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Website</v-list-item-title>
+            <v-list-item-title>Dashboard</v-list-item-title>
           </v-list-item>
         </router-link>
         <hr>
@@ -50,9 +50,10 @@
             <v-list-item-icon>
               <v-icon :color="$route.path === '/technologies' ? 'grey darken-4 darken-4' : 'blue-grey darken-3'">mdi-briefcase</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Inventory</v-list-item-title>
+            <v-list-item-title>Website</v-list-item-title>
           </v-list-item>
         </router-link>
+        <hr>
         <router-link to="/domains">
           <v-list-item link>
             <v-list-item-icon>
@@ -61,6 +62,7 @@
             <v-list-item-title>Domains</v-list-item-title>
           </v-list-item>
         </router-link>
+        <hr>
         <router-link to="/">
           <v-list-item link disabled>
             <v-list-item-icon>
@@ -69,6 +71,7 @@
             <v-list-item-title>Privacy</v-list-item-title>
           </v-list-item>
         </router-link>
+        <hr>
         <router-link to="/alerts">
           <v-list-item link>
             <v-list-item-icon>
@@ -147,5 +150,8 @@ a {
   /* .slide-fade-leave-active below version 2.1.8 */ {
   transform: translateX(10px);
   opacity: 0;
+}
+.text-header {
+  height: 72px!important;
 }
 </style>
