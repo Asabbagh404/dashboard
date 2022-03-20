@@ -35,16 +35,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr
-                        v-for="(item, index) in 'coucou'"
-                        :key="item.name"
-                    >
-                      <td>{{index + 1}}</td>
-                      <td>{{item.cve}}</td>
-                      <td>{{item.priority}}</td>
-                      <td>{{item.status}}</td>
-                      <td>{{item.technology}}</td>
-                      <td>{{item.last_scanned}}</td>
+                    <tr v-for="({cve, last_scanned, priority, status, technology}, index) in technology.cves"
+                        :key="index">
+                      <td>{{ index + 1 }}</td>
+                      <td>{{ cve }}</td>
+                      <td>{{ priority }}</td>
+                      <td>{{ status }}</td>
+                      <td>{{ technology }}</td>
+                      <td>{{ last_scanned }}</td>
                     </tr>
                     </tbody>
                   </template>
@@ -56,14 +54,26 @@
             <v-col md="8">
               <v-card class="full-height">
                 <v-card-title>Embedded Scripts</v-card-title>
+                <v-card-text class="text-body-1 font-weight-bold justify-center"
+                             v-for="({url}, index) in thirdParties" :key="index">{{ url }}
+                </v-card-text>
               </v-card>
             </v-col>
             <v-col md="4">
-              <v-card>
-                <v-card-title class="text-body-1 font-weight-bold text-center justify-center">Site Display Rate
-                </v-card-title>
-                <v-card-text class="text-h5 text-center">{{ technology.siteDisplayRate }}</v-card-text>
-              </v-card>
+              <v-col md-6>
+                <v-card>
+                  <v-card-title class="text-body-1 font-weight-bold text-center justify-center">Header score
+                  </v-card-title>
+                  <v-card-text class="text-h5 text-center">{{ headerScore }}</v-card-text>
+                </v-card>
+              </v-col>
+              <v-col md-6>
+                <v-card>
+                  <v-card-title class="text-body-1 font-weight-bold text-center justify-center">SSL/TLS score
+                  </v-card-title>
+                  <v-card-text class="text-h5 text-center">{{ sslAnalysisScore }}</v-card-text>
+                </v-card>
+              </v-col>
             </v-col>
           </v-row>
           <v-row>
@@ -80,24 +90,24 @@
                 </v-card-text>
               </v-card>
             </v-col>
-            <v-col lg="4">
-              <v-card>
-                <v-card-title class="text-body-1 font-weight-bold text-center justify-center">Global Popularity
-                </v-card-title>
-                <v-card-text class="text-h5 text-center">{{ technology.globalPopularity }}</v-card-text>
-              </v-card>
-            </v-col>
           </v-row>
         </v-col>
         <v-col md="3" sm="12">
-        <v-row>
-          <v-col md="12" >
-            <v-card>
-              <v-card-title>Links</v-card-title>
-              <v-card-text class="text-h5 text-center">coucou</v-card-text>
-            </v-card>
-          </v-col>
-        </v-row>
+          <v-row>
+            <v-col>
+              <v-card>
+                <v-card-title>Links</v-card-title>
+                <div v-for="({link}, index) in technology.links" :key="index">
+                  <v-card-text md="12" class="text-body-2 text-center mb-3">
+                    <a :href="link">
+                      {{ link }}
+                    </a>
+                  </v-card-text>
+                  <hr class="mb-1">
+                </div>
+              </v-card>
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
     </v-container>
@@ -111,7 +121,18 @@ export default {
     technology: {
       required: true,
       type: Object,
-    }
+    },
   },
+  computed: {
+    sslAnalysisScore() {
+      return this.technology.app?.ssl_analysis.notation || ''
+    },
+    headerScore() {
+      return this.technology.app?.header_analysis.notation || ''
+    },
+    thirdParties() {
+      return this.technology?.app?.third_parties || ''
+    }
+  }
 }
 </script>

@@ -32,7 +32,7 @@ export default {
   },
   async mounted() {
     this.technologies = this.$store.state.appsList;
-    await this.onTechnologySelect(this.technologies[0].id);
+    await this.onTechnologySelect(this.$store.state.appsList[0].id);
   },
   data() {
     return {
@@ -47,9 +47,11 @@ export default {
   },
   methods: {
     async onTechnologySelect(id) {
-      this.singleTechnology.app = await odinAxiosInstance.getApp(id)
-      this.singleTechnology.links = await odinAxiosInstance.getAppLinks(id);
-      this.singleTechnology.csves = await odinAxiosInstance.getAppCsves(id);
+      this.singleTechnology = {
+        app: await odinAxiosInstance.getApp(id),
+        links: await odinAxiosInstance.getAppLinks(id),
+        cves: await odinAxiosInstance.getAppCsves(id)
+      }
     }
   }
 }

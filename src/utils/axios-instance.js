@@ -15,7 +15,7 @@ const endpoints = {
     getAppsListUrl: () => '/v1/apps',
     getAppUrl: (id) => `/v1/app/${id}`,
     getAppLinksUrl: (id) => `/v1/app/${id}/links`,
-    getAppCsvesUrl: (id) => `/v1/app/${id}/csves`,
+    getAppCsvesUrl: (id) => `/v1/app/${id}/cves`,
 }
 
 Object.assign(odinAxiosInstance, {

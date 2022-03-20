@@ -40,7 +40,7 @@
         </v-list-item>
       </v-list>
 
-      <v-divider></v-divider>
+      <v-divider />
 
       <v-list
           nav
@@ -54,7 +54,7 @@
             <v-list-item-title>Dashboard</v-list-item-title>
           </v-list-item>
         </router-link>
-        <hr>
+        <v-divider />
         <router-link to="/technologies">
           <v-list-item link>
             <v-list-item-icon>
@@ -63,7 +63,7 @@
             <v-list-item-title>Website</v-list-item-title>
           </v-list-item>
         </router-link>
-        <hr>
+        <v-divider />
         <router-link to="/domains">
           <v-list-item link>
             <v-list-item-icon>
@@ -72,7 +72,7 @@
             <v-list-item-title>Domains</v-list-item-title>
           </v-list-item>
         </router-link>
-        <hr>
+        <v-divider />
         <router-link
             :is="true ? 'span' : 'router-link'"
             to="/">
@@ -83,7 +83,7 @@
             <v-list-item-title>Privacy</v-list-item-title>
           </v-list-item>
         </router-link>
-        <hr>
+        <v-divider />
         <router-link to="/alerts">
           <v-list-item link>
             <v-list-item-icon>
@@ -169,7 +169,7 @@ body {
   float: left;
 }
 a {
-  color: transparent !important;
+  text-decoration: none !important;
 }
 .slide-fade-leave-active {
   transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
