@@ -27,16 +27,23 @@ export default new Vuex.Store({
           "url": "www.googletagmanager.com"
         }
       ]
-    }
+    },
+    isAdmin: false,
   },
   mutations: {
     setAppsList (state, data) {
       state.appsList = data
+    },
+    setAdmin(state, value) {
+      state.admin = value
     }
   },
   actions: {
     async setAppsList (context) {
       context.commit('setAppsList', await odinAxiosInstance.getAppsList());
+    },
+    async setAdmin(context, value) {
+      context.commit('setAdmin', value)
     }
   },
   getters: {

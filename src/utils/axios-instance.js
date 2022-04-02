@@ -1,7 +1,7 @@
 import https from "https";
 import axios from 'axios';
 import app from '../main';
-
+const ENDPOINT_PREFIX = '/v1'
 const agent = new https.Agent({
     rejectUnauthorized: false
 });
@@ -12,10 +12,11 @@ const config = {
 };
 const odinAxiosInstance = axios.create(config);
 const endpoints = {
-    getAppsListUrl: () => '/v1/apps',
-    getAppUrl: (id) => `/v1/app/${id}`,
-    getAppLinksUrl: (id) => `/v1/app/${id}/links`,
-    getAppCsvesUrl: (id) => `/v1/app/${id}/cves`,
+    getAppsListUrl: () => ENDPOINT_PREFIX + '/apps',
+    getAppUrl: (id) => ENDPOINT_PREFIX + `/app/${id}`,
+    getAppLinksUrl: (id) => ENDPOINT_PREFIX + `/app/${id}/links`,
+    getAppCsvesUrl: (id) => ENDPOINT_PREFIX + `/app/${id}/cves`,
+    postLoginUrl: () => ENDPOINT_PREFIX + '/login'
 }
 
 Object.assign(odinAxiosInstance, {
@@ -47,6 +48,9 @@ Object.assign(odinAxiosInstance, {
             app.emitError(e)
         }
     },
+    postLogin: async (login, password) => {
+        return (await odinAxiosInstance.post(endpoints.postLoginUrl(), { login, password })).data;
+    }
 });
 
 export {
